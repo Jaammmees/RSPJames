@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <queue>
 
 class Graph {
     int V; // Number of vertices
@@ -25,6 +26,43 @@ public:
             std::cout << std::endl;
         }
     }
+
+    void bfs(int start){
+        std::vector<bool> visited(V,false);
+        std::queue<int> queue;
+
+        visited[start] = true;
+        queue.push(start);
+
+        while(!queue.empty()){
+            int vertex = queue.front();
+            queue.pop();
+            std::cout << vertex << " ";
+
+            for(int neighbour : adj[vertex]){
+                if(!visited[neighbour]){
+                    visited[neighbour] = true;
+                    queue.push(neighbour);
+                }
+            }
+        }
+    }
+
+    void dfs(int start){
+        std::vector<bool> visited(V,false);
+        dfsHelper(start,visited);
+    }
+
+    void dfsHelper(int vertex, std::vector<bool>& visited){
+        visited[vertex] = true;
+        std::cout << vertex << " ";
+
+        for(int neighbour : adj[vertex]){
+            if(!visited[neighbour]){
+                dfsHelper(neighbour,visited);
+            }
+        }
+    }
 };
 
 int main() {
@@ -36,6 +74,8 @@ int main() {
     g.addEdge(2, 3);
 
     g.printGraph();
+    g.bfs(0);
+    g.dfs(0);
 
     return 0;
 }
