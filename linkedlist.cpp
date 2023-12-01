@@ -32,7 +32,7 @@ public:
         }
     }
 
-    // Remove method
+    // deleteNode
     void deleteNode(int value) {
         //uses dummy node to handle case of root itself being deleted
         if (head == nullptr) return;
