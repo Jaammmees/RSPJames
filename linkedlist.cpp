@@ -39,6 +39,7 @@ public:
         if (head->data == value) {
             Node* temp = head;
             head = head->next;
+            delete temp;
             return;
         }
         //skips the node and re-assigns pointer to next to "delete"
@@ -51,6 +52,7 @@ public:
 
         Node* temp = current->next;
         current->next = temp->next;
+        delete temp;
     }
 
     // print method
