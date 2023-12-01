@@ -71,7 +71,9 @@ int main() {
     list.insert(2);
     list.insert(3);
     list.print(); 
+    //should be 1->2->3
     list.deleteNode(2);
+    //should be 1->3
     list.print(); 
 
     return 0;
