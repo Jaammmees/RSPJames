@@ -3,7 +3,6 @@
 struct Node {
     int data; 
     Node* next; 
-    // Constructor in longhand
     Node(int val) {
         data = val;
         next = nullptr;
